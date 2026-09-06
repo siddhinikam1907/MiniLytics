@@ -1,11 +1,13 @@
 import React from "react";
 import ShortenUrlPage from "./components/ShortenUrlPage.jsx";
 import { Route, Routes } from "react-router-dom";
+
 import LandingPage from "./components/LandingPage";
 import AboutPage from "./components/AboutPage";
 import RegisterPage from "./components/RegisterPage";
 import LoginPage from "./components/LoginPage";
 import DashboardLayout from "./components/Dashboard/DashboardLayout.jsx";
+
 import "./App.css";
 import Navbar from "./components/NavBar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -17,10 +19,17 @@ const AppRouter = () => {
   return (
     <>
       <Navbar />
+
       <Toaster position="bottom-center" />
+
       <Routes>
+        {/* Home */}
         <Route path="/" element={<LandingPage />} />
+
+        {/* About */}
         <Route path="/about" element={<AboutPage />} />
+
+        {/* Register */}
         <Route
           path="/register"
           element={
@@ -29,6 +38,8 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+
+        {/* Login */}
         <Route
           path="/login"
           element={
@@ -37,6 +48,8 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+
+        {/* Dashboard */}
         <Route
           path="/dashboard"
           element={
@@ -45,7 +58,15 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+
+        {/* Short URL */}
+        {/* Example: https://minilytics.netlify.app/ABC123 */}
+        <Route path="/:url" element={<ShortenUrlPage />} />
+
+        {/* Error */}
         <Route path="/error" element={<ErrorPage />} />
+
+        {/* Any unknown URL */}
         <Route
           path="*"
           element={
@@ -53,17 +74,10 @@ const AppRouter = () => {
           }
         />
       </Routes>
+
       <Footer />
     </>
   );
 };
 
 export default AppRouter;
-
-export const SubDomainRouter = () => {
-  return (
-    <Routes>
-      <Route path="/:url" element={<ShortenUrlPage />} />
-    </Routes>
-  );
-};
