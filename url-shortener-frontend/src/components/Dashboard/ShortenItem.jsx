@@ -20,7 +20,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
   const [selectedUrl, setSelectedUrl] = useState("");
   const [analyticsData, setAnalyticsData] = useState([]);
 
-  const subDomain = import.meta.env.VITE_REACT_SUBDOMAIN.replace(
+  const subDomain = (import.meta.env.VITE_REACT_SUBDOMAIN || "").replace(
     /^https?:\/\//,
     "",
   );
